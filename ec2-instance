@@ -1,0 +1,48 @@
+
+variable "instance_ami" {
+
+type = string
+
+default = "ami-018046b953a698135"
+
+}
+
+variable "instance_type" {
+
+type = string
+
+default = "t2.mirco"
+
+}
+
+variable "instance_count" {
+
+type = number
+
+default = 1
+
+}
+
+variable "instance_name" {
+
+type = string
+
+default = "tf-server"
+
+}
+
+resource "aws_instance" "myinstance" {
+
+ami = var.instance_ami
+
+instance_type = var.instance_type
+
+count = var.instance_count
+
+tags = {
+
+Name = var.instance_name
+
+}
+
+}
